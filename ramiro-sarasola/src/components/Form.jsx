@@ -1,14 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import Card from "./Card";
-import './Form.css'
+import './Form.css';
 
 const Form = () => {
   const [user, setUser] = useState({
     name: "",
-    obraSocial: "",
-    email: "",
-    medico: "",
+    favoriteColor: "",
   });
 
   const [show, setShow] = useState(false);
@@ -20,23 +18,25 @@ const Form = () => {
   };
 
   const validacion = () => {
-    if (user.name.length > 8 && user.medico !== "") {
-      
+    console.log(user.favoriteColor.length)
+    console.log(user.name.length)
+    let trimeName = user.name.trim()
+
+    if (trimeName.length > 6 && user.favoriteColor.length > 2) {
       setShow(true);
+      
     }else{
-      alert('Los datos ingresados son incorrectos');
+      alert('Por favor chequea que la información sea correcta');
     }
   };
 
   return (
-    <>
-      {show ? (
-        <Card name={user.name} medico={user.medico} />
-      ) : (
-        
+    <>  
+
+      <h1>Choose Your Favorite Color</h1>
 
         <form onSubmit={handleSubmit}>
-          <label>Nombre: </label>
+          <label>Input your Complete Name: </label>
           <input
             type="text"
             value={user.name}
@@ -44,41 +44,24 @@ const Form = () => {
               setUser({ ...user, name: event.target.value });
             }}
           />
-          <label>Obra Social: </label>
+          <label>Input your Favorite Color: </label>
           <input
             type="text"
-            value={user.obraSocial}
+            value={user.favoriteColor}
             onChange={(event) => {
-              setUser({ ...user, obraSocial: event.target.value });
+              console.log(event.target.value)
+              setUser({ ...user, favoriteColor: event.target.value });
             }}
           />
-          <label>Email: </label>
-          <input
-            type="email"
-            value={user.email}
-            onChange={(event) => {
-              setUser({ ...user, email: event.target.value });
-            }}
-          />
-
-          <select
-            name=""
-            id=""
-            value={user.medico}
-            onChange={(event) => {
-              setUser({ ...user, medico: event.target.value });
-            }}
-          >
-            <option value="">Seleccione</option>
-            <option value="Odontologo">Odontologo</option>
-            <option value="Dentista">Dentista</option>
-            <option value="Cardiologo">Cardiologo</option>
-          </select>
-
-          <button>Enviar</button>
+          <button>Send</button>
         </form>
-      
+
+
+      {show && (
+        <Card name={user.name} favoriteColor={user.favoriteColor} />
       )}
+
+
     </>
   );
 };

@@ -1,17 +1,21 @@
 import React from 'react'
+import './Card.css'
 
-const Card = ({name, medico}) => {
+const Card = (props) => {
 
-    const date = new Date();
-    const day = date.getDay();
-    const month = date.getMonth();
-    const year = date.getFullYear();
+  const style = {
+    backgroundColor: props.favoriteColor,
+    height: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 
   return (
-    <div>
-        <h4>Informacion del Turno</h4>
-        <p>El usuario {name} tiene turno con: {medico}</p>
-        <p>Fecha: {`${day+12}/${month+1}/${year}`}</p>
+    <div className='color'>
+        <h4>Hola {props.name}</h4>
+        <p>Sabemos que tu color favorito es:</p>
+        <div className='colorDiv' style={style}><h4>{props.favoriteColor}</h4></div>
     </div>
   )
 }

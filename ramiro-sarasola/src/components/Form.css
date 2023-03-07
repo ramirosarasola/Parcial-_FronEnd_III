@@ -2,5 +2,6 @@ form{
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    height: 80vh;
+    height: 30vh;
+    width: 100%;
 }
