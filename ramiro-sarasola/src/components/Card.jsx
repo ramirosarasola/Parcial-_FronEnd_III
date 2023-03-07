@@ -11,7 +11,7 @@ const Card = ({name, medico}) => {
     <div>
         <h4>Informacion del Turno</h4>
         <p>El usuario {name} tiene turno con: {medico}</p>
-        <p>Fecha: {`${day+7}/${month+1}/${year}`}</p>
+        <p>Fecha: {`${day+12}/${month+1}/${year}`}</p>
     </div>
   )
 }
